@@ -10,7 +10,9 @@ import {genId} from "./util"
 TSERS(TodoMVC, {
   DOM: ReactDOM("#app"),
   model$: Model({
-    items: R.times(i => ({id: genId(), text: "Todo " + i, completed: false}), 2000),
+    items: [
+      {id: genId(), text: "TSERS!", completed: false}
+    ],
     filter: ""
   }),
   hash$: HashListener
