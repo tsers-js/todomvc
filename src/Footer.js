@@ -1,4 +1,3 @@
-import {Observable as O} from "rx"
 import cn from "classnames"
 
 export default function main(signals) {

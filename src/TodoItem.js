@@ -10,7 +10,7 @@ export default function main(signals) {
 
   const vdom$ = DOM.prepare(model$.map(
     ({completed, editing, text, hidden}) =>
-      h(`li`, {key: id, className: cn({completed, editing}), style: {display: hidden ? "none" : ""}}, [
+      h("li", {key: id, className: cn({completed, editing}), style: {display: hidden ? "none" : ""}}, [
         h("input.toggle", {type: "checkbox", checked: completed}),
         h("label.view", `${text}`),
         h("input.edit", {type: "text", value: text, autofocus: editing}),
