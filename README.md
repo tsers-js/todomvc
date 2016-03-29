@@ -7,7 +7,11 @@
 
 ## Running the example
 
-TODO
+```bash
+git clone https://github.com/tsers-js/todomvc.git
+cd todomvc
+npm i && npm start
+```
 
 ## License
 
