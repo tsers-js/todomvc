@@ -1,5 +1,5 @@
 import {Observable as O} from "rx"
-import {genId, ENTER_KEY, ESC_KEY} from "./util"
+import {genId, ENTER_KEY, ESC_KEY} from "../util"
 
 export default function main(signals) {
   const {DOM, model$, mux} = signals

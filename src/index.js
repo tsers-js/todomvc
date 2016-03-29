@@ -3,7 +3,7 @@ import TSERS from "@tsers/core"
 import ReactDOM from "@tsers/react"
 import Model, {R} from "@tsers/model"
 
-import TodoMVC from "./App"
+import TodoMVC from "./components/App"
 import {genId} from "./util"
 
 

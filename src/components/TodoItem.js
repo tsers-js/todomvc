@@ -1,7 +1,7 @@
 import {Observable as O} from "rx"
 import cn from "classnames"
 
-import {ENTER_KEY, ESC_KEY} from "./util"
+import {ENTER_KEY, ESC_KEY} from "../util"
 
 
 export default function main(signals) {
