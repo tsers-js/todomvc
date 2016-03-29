@@ -21,7 +21,8 @@ export default function main(signals) {
     .withLatestFrom(model$.lens("completed"), (_, completed) => !completed)
 
   const startEdit$ = DOM.events(vdom$, "", "doubleclick")
-    .do(focusToEdit)
+    .do(focusOnEdit)
+    .share()
 
   const enterDown$ = DOM.events(vdom$, ".edit", "keydown").filter(e => e.keyCode === ENTER_KEY)
   const escDown$ = DOM.events(vdom$, ".edit", "keydown").filter(e => e.keyCode === ESC_KEY)
@@ -52,7 +53,7 @@ export default function main(signals) {
   })
 }
 
-function focusToEdit(e) {
+function focusOnEdit(e) {
   // so ugly piece of code... :-(
   let el = e.nativeEvent.target
   while (el.tagName !== "LI") el = el.parentNode
