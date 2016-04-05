@@ -23,7 +23,7 @@
   "dependencies": {
     "@tsers/core": "1.x",
     "@tsers/model": "1.x",
-    "@tsers/react": "1.x",
+    "@tsers/snabbdom": "^0.2.0",
     "classnames": "^2.2.3",
     "rx": "^4.1.0",
     "todomvc-app-css": "^2.0.4",

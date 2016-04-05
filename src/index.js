@@ -1,6 +1,6 @@
 import {Observable as O} from "rx"
 import TSERS from "@tsers/core"
-import ReactDOM from "@tsers/react"
+import Snabbdom from "@tsers/snabbdom"
 import Model, {R} from "@tsers/model"
 
 import TodoMVC from "./components/App"
@@ -8,7 +8,7 @@ import {genId} from "./util"
 
 
 TSERS(TodoMVC, {
-  DOM: ReactDOM("#app"),
+  DOM: Snabbdom("#app"),
   model$: Model({
     items: [
       {id: genId(), text: "TSERS!", completed: false}

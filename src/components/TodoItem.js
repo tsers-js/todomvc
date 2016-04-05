@@ -20,7 +20,7 @@ export default function main(signals) {
   const toggle$ = DOM.events(vdom$, ".toggle", "change")
     .withLatestFrom(model$.lens("completed"), (_, completed) => !completed)
 
-  const startEdit$ = DOM.events(vdom$, "", "doubleclick")
+  const startEdit$ = DOM.events(vdom$, "", "dblclick")
     .do(focusOnEdit)
     .share()
 
@@ -55,7 +55,7 @@ export default function main(signals) {
 
 function focusOnEdit(e) {
   // so ugly piece of code... :-(
-  let el = e.nativeEvent.target
+  let el = (e.nativeEvent || e).target
   while (el.tagName !== "LI") el = el.parentNode
   const edit = el.querySelector(".edit")
   setTimeout(() => {
