@@ -5,12 +5,21 @@ import {ENTER_KEY, ESC_KEY} from "../util"
 
 
 export default function main(signals) {
-  const {DOM, model$, mux, removeMod$, id} = signals
+  const {DOM, model$, mux, filter$, removeMod$, id} = signals
   const {h} = DOM
 
-  const vdom$ = DOM.prepare(model$.map(
-    ({completed, editing, text, hidden}) =>
-      h("li", {key: id, className: cn({completed, editing}), style: {display: hidden ? "none" : ""}}, [
+  const itemVisible = (it, filter) =>
+  (filter === "completed" && it.completed) ||
+  (filter === "active" && !it.completed) ||
+  !filter
+
+  const m1 = model$.map(x => x).publishReplay(1).refCount()
+
+  const visible$ = O.combineLatest(m1, filter$, itemVisible).share()
+
+  const vdom$ = DOM.prepare(O.combineLatest(m1, visible$,
+    ({completed, editing, text}, visible) =>
+      h("li", {key: id, className: cn({completed, editing}), style: {display: !visible ? "none" : ""}}, [
         h("input.toggle", {type: "checkbox", checked: completed}),
         h("label.view", `${text}`),
         h("input.edit", {type: "text", value: text, autofocus: editing}),

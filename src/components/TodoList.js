@@ -6,11 +6,14 @@ export default function main(signals) {
   const {h} = DOM
 
   const items$ = model$.lens("items")
+  const filter$ = model$.lens("filter")
   const allCompleted$ = model$.map(m => m.allCompleted)
 
+
+
   const children$$ = items$.mapListById((id, item$) => {
-    const removeMod$ = items$.mod(O.just(items => items.filter(it => it.id !== id)))
-    return Item({...signals, id, model$: item$, removeMod$})
+    const removeMod$ = items$.mod(O.of(items => items.filter(it => it.id !== id)))
+    return Item({...signals, id, model$: item$, filter$, removeMod$})
   })
 
   const [{DOM: itemsDOM$}, out$] = demuxCombined(children$$, "DOM")

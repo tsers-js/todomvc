@@ -9,13 +9,7 @@ export default function main(signals) {
   const {L} = M
   const {h} = DOM
 
-  const itemVisible = (it, filter) =>
-    (filter === "completed" && it.completed) ||
-    (filter === "active" && !it.completed) ||
-    !filter
-
   const model$ = M.lens(L(
-    L.lens(m => ({...m, items: m.items.map(it => ({...it, hidden: !itemVisible(it, m.filter)}))}), R.identity),
     L.augment({
       itemsLeft: ({items}) => items.filter(R.whereEq({completed: false})).length
     }),
