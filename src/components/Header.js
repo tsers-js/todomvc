@@ -1,4 +1,4 @@
-import {Observable as O} from "rx"
+import {Observable as O} from "@tsers/rxjs"
 import {genId, ENTER_KEY, ESC_KEY} from "../util"
 
 export default function main(signals) {

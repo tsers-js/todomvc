@@ -1,4 +1,4 @@
-import {Observable as O} from "rx"
+import {Observable as O} from "@tsers/rxjs"
 import cn from "classnames"
 
 import {ENTER_KEY, ESC_KEY} from "../util"
@@ -41,7 +41,7 @@ export default function main(signals) {
 
   const mod$ = O.merge(
     model$.lens("completed").set(toggle$),
-    model$.lens("editing").set(O.merge(startEdit$.map(true), stopEdit$.map(false))),
+    model$.lens("editing").set(O.merge(startEdit$.mapTo(true), stopEdit$.mapTo(false))),
     model$.lens("text").set(newText$),
     // remove item if destroy button was clicked
     removeMod$.sample(DOM.events(vdom$, ".destroy", "click"))

@@ -1,4 +1,4 @@
-import {Observable as O} from "rx"
+import {Observable as O} from "@tsers/rxjs"
 import {R} from "@tsers/model"
 import List from "./TodoList"
 import Header from "./Header"

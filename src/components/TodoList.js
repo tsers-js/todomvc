@@ -1,4 +1,4 @@
-import {Observable as O} from "rx"
+import {Observable as O} from "@tsers/rxjs"
 import Item from "./TodoItem"
 
 export default function main(signals) {

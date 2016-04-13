@@ -1,4 +1,4 @@
-import {Observable as O} from "rx"
+import Rx, {Observable as O} from "@tsers/rxjs"
 import TSERS from "@tsers/core"
 import Snabbdom from "@tsers/snabbdom"
 import Model, {R} from "@tsers/model"
@@ -7,7 +7,7 @@ import TodoMVC from "./components/App"
 import {genId} from "./util"
 
 
-TSERS(TodoMVC, {
+TSERS(Rx, TodoMVC, {
   DOM: Snabbdom("#app"),
   model$: Model({
     items: [
@@ -24,9 +24,9 @@ function HashListener() {
     .map(() => window.location.hash)
     .startWith(window.location.hash)
     .map(h => (h || "").replace(/^#\/?/g, ""))
-    .replay(null, 1)
+    .publishReplay(1)
 
-  const dispose = singal$.connect()
-  const executor = () => dispose
+  const subscription = singal$.connect()
+  const executor = () => subscription
   return [singal$, executor]
 }

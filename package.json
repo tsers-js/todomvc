@@ -21,11 +21,11 @@
     "watch": "mkdir -p dist && watchify -v -t babelify src/index.js -o dist/bundle.js"
   },
   "dependencies": {
-    "@tsers/core": "1.x",
-    "@tsers/model": "1.x",
-    "@tsers/snabbdom": "^0.2.0",
+    "@tsers/core": "2.0.0-alpha2",
+    "@tsers/model": "2.0.0-alpha2",
+    "@tsers/snabbdom": "1.0.0-alpha2",
+    "@tsers/rxjs": "latest",
     "classnames": "^2.2.3",
-    "rx": "^4.1.0",
     "todomvc-app-css": "^2.0.4",
     "todomvc-common": "^1.0.2"
   },
